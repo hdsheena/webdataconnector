@@ -73,7 +73,7 @@ describe('General Simulator Tests', function(){
 
   it("Should Have Set Src Query Url", function(done){
     const wdcUrl = 'srcQuery';
-    driver.findElement({id:'address-input'})
+    driver.findElement(webdriver.By.id('address-input'))
       .then(function (addressBar) {
         return addressBar.getAttribute("value");
       })
@@ -86,7 +86,7 @@ describe('General Simulator Tests', function(){
   it("Should be Able to Enter a Url", function(done){
     let addressBar;
     const wdcUrl = '../Examples/html/earthquakeUSGS.html';
-    driver.findElement({id:'address-input'})
+    driver.findElement(webdriver.By.id('address-input'))
       .then(function (element) {
         addressBar = element;
         return addressBar.clear();
@@ -106,24 +106,24 @@ describe('General Simulator Tests', function(){
 
   it("Should be Able to Enter WDC Attributes", function(done){
     const testString = "test";
-    driver.findElement({id:'connectionName'})
+    driver.findElement(webdriver.By.id('connectionName'))
       .then(function (element) {
         return element.sendKeys(testString);
       })
       .then(function() {
-        return driver.findElement({id:'connectionData'})
-      })
-      .then(function (element) {
-        return element.sendKeys(testString);
-      })
-      .then(function() {
-        return driver.findElement({id:'username'})
+        return driver.findElement(webdriver.By.id('connectionData'))
       })
       .then(function (element) {
         return element.sendKeys(testString);
       })
       .then(function() {
-        return driver.findElement({id:'password'})
+        return driver.findElement(webdriver.By.id('username'))
+      })
+      .then(function (element) {
+        return element.sendKeys(testString);
+      })
+      .then(function() {
+        return driver.findElement(webdriver.By.id('password'))
       })
       .then(function (element) {
         element.sendKeys(testString);
@@ -132,7 +132,7 @@ describe('General Simulator Tests', function(){
   });
 
   it("Should Be Able to Open Advanced Settings", function(done) {
-    driver.findElement({className:'advanced-btn'})
+    driver.findElement(webdriver.By.className('advanced-btn'))
       .then(function(btn) {
         return btn.click();
       })
@@ -146,7 +146,7 @@ describe('General Simulator Tests', function(){
   })
 
   it("Should be Able to Enter Interactive Mode", function(done){
-    driver.findElement({ id: 'interactive-btn' })
+    driver.findElement(webdriver.By.id('interactive-btn'))
       .then(function (btn) {
         return btn.click();
       })
@@ -181,7 +181,7 @@ describe('General Simulator Tests', function(){
   it("Should Have Set WDC Attrs", function(done){
     const correctName = 'USGS Earthquake Feed';
     driver.sleep(750);
-    driver.findElement({id:'connectionName'})
+    driver.findElement(webdriver.By.id('connectionName'))
       .then(function(field) {
         return field.getAttribute("value");
       })
@@ -200,7 +200,7 @@ describe('General Simulator Tests', function(){
   })
 
   it("Should Fetch Data", function(done){
-    driver.findElement({ className: 'fetch-btn' })
+    driver.findElement(webdriver.By.className('fetch-btn'))
       .then(function (btn) {
         return btn.click();
       })
