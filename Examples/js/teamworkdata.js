@@ -31,6 +31,11 @@
 
     // Download the data
     myConnector.getData = function(table, doneCallback) {
+        $.ajaxSetup({
+  headers : {
+    'Authorization' : 'Basic SOMEAUTHKEYGOESHERE',
+  }
+});
         $.getJSON("https://smartflow.teamwork.com/tasks.json", function(resp) {
             var feat = resp["todo-items"],
                 tableData = [];
